@@ -1,10 +1,17 @@
 import './App.css';
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import SearchElement from './components/SearchElement';
 
 function App() {
-  let [homes, setHomes] = useState(['empty']);
+  let [homes, setHomes] = useState([]);
   let [searchParams, setSearchParams] = useState('');
+  let [content, setContent] = useState(false);
+
+  useEffect(()=>{
+    !!homes.length ? setContent(true) : setContent(false)
+    debugger;
+  }, [homes])
 
   const getHomes = async (e) => {
     await axios.get(`http://localhost:3000/api/search?search_params=${searchParams}`, {
@@ -20,10 +27,10 @@ function App() {
     setSearchParams(val)
   }
 
-  let homesList = Object.keys(homes).map((k)=>{
+  let homesList = Object.keys(homes).map((home_id)=>{
     return (
-      <li className="search-element">
-        {homes[k]['address']}
+      <li className="search-element" key={home_id}>
+        <SearchElement home={homes[home_id]}/>
       </li>
     )
   })
@@ -45,12 +52,18 @@ function App() {
             className="search-submit"
             onClick={(e)=>getHomes(e)} 
             type="submit" 
-            value="Submit"
+            value="Search"
           />
         </div>
-        {searchParams && <ul className="search-results">
-          {homesList}
-        </ul>}
+        {content ? (
+          <ul className="search-results">
+            {homesList}
+          </ul>
+        ) : (
+          <div className="empty-state">
+            Your dream house awaits
+          </div>
+        )}
       </div>
     </div>
   );
