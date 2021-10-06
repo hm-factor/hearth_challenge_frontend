@@ -17,13 +17,12 @@ function App() {
   }
 
   const updateSearchParams = (lt) => {
-    console.log(lt)
     setSearchParams(lt)
   }
 
   let homesList = Object.keys(homes).map((k)=>{
     return (
-      <li>
+      <li className="search-element">
         {homes[k]['address']}
       </li>
     )
@@ -31,16 +30,28 @@ function App() {
 
   return (
     <div className="App">
-      <input 
-        className="search-bar" 
-        placeholder="Find Homes..." 
-        value={searchParams}
-        onChange={(e)=>updateSearchParams(e.target.value)}
-      />
-      <input onClick={(e)=>getHomes(e)} type="submit" value="Submit"/>
-      <ul>
-        {homesList}
-      </ul>
+      <div className="content">
+        <div className="banner">
+          ZILLOW?
+        </div>
+        <div className="search-bar">
+          <input 
+            className="search-input" 
+            placeholder="Find Homes..." 
+            value={searchParams}
+            onChange={(e)=>updateSearchParams(e.target.value)}
+          />
+          <input 
+            className="search-submit"
+            onClick={(e)=>getHomes(e)} 
+            type="submit" 
+            value="Submit"
+          />
+        </div>
+        <ul className="search-results">
+          {homesList}
+        </ul>
+      </div>
     </div>
   );
 }
