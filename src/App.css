@@ -79,6 +79,8 @@
   border: .5px solid transparent;
   padding: 5px 10px;
   border-radius: 10px;
+  -webkit-transition: border .3s ease, background-color .3s ease;
+  -moz-transition: border .3s ease, background-color .3s ease;
   transition: border .3s ease, background-color .3s ease;
 }
 
@@ -86,4 +88,19 @@
   border: .5px solid wheat;
   background-color: wheat;
   cursor: pointer;
+}
+
+.more-info-off {
+  /* display: none; */
+  overflow: hidden;
+  height: 0px;
+  -webkit-transition: height 0.3s ease;
+  -moz-transition: height 0.3s ease;
+  transition: height 0.3s ease;
+}
+
+.more-info-on {
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
