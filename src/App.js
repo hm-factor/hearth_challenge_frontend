@@ -16,8 +16,8 @@ function App() {
       .catch((err)=>console.log(err.message))
   }
 
-  const updateSearchParams = (lt) => {
-    setSearchParams(lt)
+  const updateSearchParams = (val) => {
+    setSearchParams(val)
   }
 
   let homesList = Object.keys(homes).map((k)=>{
@@ -48,9 +48,9 @@ function App() {
             value="Submit"
           />
         </div>
-        <ul className="search-results">
+        {searchParams && <ul className="search-results">
           {homesList}
-        </ul>
+        </ul>}
       </div>
     </div>
   );

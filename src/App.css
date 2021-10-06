@@ -49,16 +49,36 @@
 }
 
 .search-results {
+  max-height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 200px;
-  margin-top: 10px;
   background-color: white;
   border-radius: 5px;
-  padding: 0;
+  margin-top: 10px;
+  padding: 10px 0 10px 0;
+  overflow: scroll;
 }
 
 .search-element {
+  text-align: center;
   list-style: none;
+  margin: 5px;
+  font-size: 14px;
+  border: .5px solid transparent;
+  padding: 5px;
+  border-radius: 10px;
+  transition: border .3s ease, opacity .3s ease, background-color .3s ease;
 }
+
+.search-element:hover {
+  border: .5px solid wheat;
+  background-color: wheat;
+  cursor: pointer;
+  /* color: white; */
+}
+
+/* ::webkit-scrollbar-thumb {
+  opacity: 0.14;
+} */
