@@ -8,9 +8,9 @@
 
 Clone both the [frontend](https://github.com/hm-factor/hearth_challenge_frontend) and [backend](https://github.com/hm-factor/hearth_challenge_backend) repositories into a folder.
 
-Navigate into the frontend folder and **npm install**.
+Navigate into the frontend folder and `npm install`.
 
-Navigate into the backend folder and **bundle install**.
+Navigate into the backend folder and `bundle install`.
 
 Run `rails db:seed` to fill the database with csv info.
 
