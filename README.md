@@ -12,4 +12,6 @@ Navigate into the frontend folder and **npm install**.
 
 Navigate into the backend folder and **bundle install**.
 
+Run `rails db:seed` to fill the database with csv info.
+
 Start the backend first with **rails s** and then start the frontend witth **npm start** where you will be prompted to run the frontend on a different port (enter y).
