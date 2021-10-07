@@ -1,8 +1,8 @@
 import "../App.css";
-import React, { useState } from "react";
+import React from "react";
 
 export default function HomeDetail(props) {
-  let { address, zip, baths, beds, city, square_feet, state, price } =
+  let { zip, baths, beds, city, square_feet, state, price } =
     props.home;
 
   const formatPrice = new Intl.NumberFormat("en-US", {
