@@ -1,10 +1,10 @@
 .App {
   height: inherit;
   width: inherit;
-  /* display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; */
+  flex-direction: column;
 
   background: black;
 }
@@ -17,10 +17,10 @@
 }
 
 .content {
-  height: 100%;
+  position: relative;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -59,6 +59,7 @@
 }
 
 .search-results, .empty-state {
+  position: relative;
   max-height: 250px;
   width: 208px;
   display: flex;
@@ -84,23 +85,68 @@
   transition: border .3s ease, background-color .3s ease;
 }
 
-.search-element:hover {
+.search-element:hover, .selected {
   border: .5px solid wheat;
   background-color: wheat;
   cursor: pointer;
 }
 
-.more-info-off {
-  /* display: none; */
+.selected {
+  border: 1px solid peru;
+}
+
+.home-detail {
+  position: absolute;
+  top: 88px;
+  left: 220px;
+  height: 250px;
+  width: 208px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+}
+
+.detail-element, .detail-element-header, .detail-element-location, 
+.detail-element-beds-baths {
+  text-align: center;
+  list-style: none;
+  margin: 5px;
+  font-size: 14px;
+  border: .5px solid transparent;
+  padding: 5px 10px;
+}
+
+.detail-element-price {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.detail-element-header, .detail-element-price {
+  font-weight: 700;
+}
+
+.detail-element-location {
+  font-size: 12px;
+  color: darkslategray;
+}
+
+.detail-element-beds-baths {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+/* .more-info-off {
   overflow: hidden;
   height: 0px;
-  -webkit-transition: height 0.3s ease;
-  -moz-transition: height 0.3s ease;
-  transition: height 0.3s ease;
 }
 
 .more-info-on {
   height: auto;
   display: flex;
   flex-direction: column;
-}
+} */

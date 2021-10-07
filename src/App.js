@@ -2,15 +2,19 @@ import './App.css';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import SearchElement from './components/SearchElement';
+import HomeDetail from './components/HomeDetail';
 
 function App() {
   let [homes, setHomes] = useState([]);
   let [searchParams, setSearchParams] = useState('');
   let [content, setContent] = useState(false);
 
+  let [moreInfo, setMoreInfo] = useState(null);
+
   useEffect(()=>{
     !!homes.length ? setContent(true) : setContent(false)
-    debugger;
+
+    setMoreInfo(null)
   }, [homes])
 
   const getHomes = async (e) => {
@@ -27,10 +31,27 @@ function App() {
     setSearchParams(val)
   }
 
-  let homesList = Object.keys(homes).map((home_id)=>{
+  const expandElement = (home) => {
+    // if null, put home in
+    // if moreinfo == home, set Moreinfo to null
+    // if morerinfo != home, set moreinfo to home
+
+    if(!moreInfo || moreInfo.id !== home.id) {
+      setMoreInfo(home)
+    } else if (moreInfo.id === home.id) {
+      setMoreInfo(null)
+    }
+  }
+
+  let homesList = homes.map((home)=>{
+    let selected = ''
+    if (moreInfo && home.id === moreInfo.id) {
+      selected = 'selected'
+    }
+
     return (
-      <li className="search-element" key={home_id}>
-        <SearchElement home={homes[home_id]}/>
+      <li className={`search-element ${selected}`} key={home.id} onClick={()=>expandElement(home)}>
+        <SearchElement address={home.address} />
       </li>
     )
   })
@@ -64,6 +85,7 @@ function App() {
             Your dream house awaits
           </div>
         )}
+        {moreInfo && <HomeDetail home={moreInfo}/>}
       </div>
     </div>
   );
