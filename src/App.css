@@ -140,6 +140,15 @@
   margin: 0px;
 }
 
+.home-detail a {
+  font-size: 12px;
+}
+
+.sale-type {
+  margin-top: 2px;
+  font-size: 10px;
+}
+
 /* .more-info-off {
   overflow: hidden;
   height: 0px;
